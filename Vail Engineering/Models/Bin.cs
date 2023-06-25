@@ -16,5 +16,6 @@
         public int Quantity { get; set; }
 
         public BinTypes BinType { get; set; } = BinTypes.None;
+
     }
 }

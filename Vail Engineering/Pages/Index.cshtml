@@ -23,9 +23,6 @@
                 @Html.DisplayNameFor(model => model.Record[0].BioDegradable)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Record[0].Quantity)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Record[0].Outlet)
             </th>
             <th>
@@ -47,16 +44,13 @@
                 @Html.DisplayFor(modelItem => item.BioDegradable)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Outlet)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comment)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+         @*       <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |*@
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>

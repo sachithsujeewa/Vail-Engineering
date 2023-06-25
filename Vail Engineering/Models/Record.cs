@@ -23,8 +23,6 @@
 
         public Bin Bin { get; set; }
 
-        public int Quantity { get; set; }
-
         public Outlets? Outlet { get; set; } = Outlets.None;
         public Location Location { get; set; }
 
