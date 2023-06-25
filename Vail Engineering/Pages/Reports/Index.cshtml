@@ -1,0 +1,79 @@
+﻿@page
+@model IndexModel
+
+<!-- Include the necessary Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Create a canvas element to render the chart -->
+<div style="display:flex">
+    <div>
+        <h2>Bar Chart</h2>
+        <div style="width: 400px; height: 300px;">
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+
+    <div>
+        <h2>Pie Chart</h2>
+        <div style="width: 400px; height: 300px;">
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+
+    <div>
+        <h2>Pie Chart</h2>
+        <div style="width: 400px; height: 300px;">
+            <canvas id="pieChart2"></canvas>
+        </div>
+    </div>
+
+</div>
+<script>
+    // Access the data from your Razor Page model
+    var barData = @Html.Raw(Json.Serialize(Model.BarChartData));
+    var binData = @Html.Raw(Json.Serialize(Model.BinDataReport));
+
+
+    // Initialize the chart
+    var barChart = new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: barData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Bar Chart Example',
+                    padding: {
+                        top: 10,
+                        bottom: 30
+                    }
+                }
+            },
+            scales: {
+                // Customize axis options here
+            },
+            legend: {
+                // Customize legend options here
+            },
+            tooltips: {
+                // Customize tooltip options here
+            },
+            animation: {
+                // Customize animation options here
+            }
+        }
+    });
+
+    var pieChart = new Chart(document.getElementById('pieChart'), {
+        type: 'pie',
+        data: barData
+    });
+
+    var pieChart = new Chart(document.getElementById('pieChart2'), {
+        type: 'line',
+        data: binData
+    });
+
+</script>

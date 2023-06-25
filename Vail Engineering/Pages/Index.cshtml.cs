@@ -25,7 +25,9 @@ namespace Vail_Engineering.Pages
         {
             if (_context.Record != null)
             {
-                Record = await _context.Record.ToListAsync();
+                Record = await _context.Record
+                    .Include(r => r.Bin)
+                    .ToListAsync();
             }
         }
     }
