@@ -1,0 +1,45 @@
+﻿@page
+@model Vail_Engineering.Pages.wcha.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>WasteChapter</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WasteChapter.Category" class="control-label"></label>
+                @Html.DropDownListFor(m => m.WasteChapter.Category.Id, new SelectList(Model.Categories, "Id", "Description"), "-- Select Category --", new { @class = "form-control" })
+                <span asp-validation-for="WasteChapter.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WasteChapter.WasteChapterCode" class="control-label"></label>
+                <input asp-for="WasteChapter.WasteChapterCode" class="form-control" />
+                <span asp-validation-for="WasteChapter.WasteChapterCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WasteChapter.WasteChapterDescription" class="control-label"></label>
+                <input asp-for="WasteChapter.WasteChapterDescription" class="form-control" />
+                <span asp-validation-for="WasteChapter.WasteChapterDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
