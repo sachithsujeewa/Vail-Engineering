@@ -88,7 +88,7 @@ namespace Vail_Engineering.Migrations
                     b.Property<int?>("Outlet")
                         .HasColumnType("int");
 
-                    b.Property<int>("WasteCategoryId")
+                    b.Property<int>("WasteChapterId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -97,7 +97,7 @@ namespace Vail_Engineering.Migrations
 
                     b.HasIndex("LocationId");
 
-                    b.HasIndex("WasteCategoryId");
+                    b.HasIndex("WasteChapterId");
 
                     b.ToTable("Record");
                 });
@@ -133,11 +133,11 @@ namespace Vail_Engineering.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("WasteChapterCode")
+                    b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WasteChapterDescription")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -162,9 +162,9 @@ namespace Vail_Engineering.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Vail_Engineering.Models.WasteCategory", "WasteCategory")
+                    b.HasOne("Vail_Engineering.Models.WasteChapter", "WasteChapter")
                         .WithMany()
-                        .HasForeignKey("WasteCategoryId")
+                        .HasForeignKey("WasteChapterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -172,7 +172,7 @@ namespace Vail_Engineering.Migrations
 
                     b.Navigation("Location");
 
-                    b.Navigation("WasteCategory");
+                    b.Navigation("WasteChapter");
                 });
 
             modelBuilder.Entity("Vail_Engineering.Models.WasteChapter", b =>

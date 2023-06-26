@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Vail_Engineering.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,17 +53,36 @@ namespace Vail_Engineering.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WasteChapter",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WasteChapter", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WasteChapter_WasteCategory_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "WasteCategory",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Record",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    WasteCategoryId = table.Column<int>(type: "int", nullable: false),
+                    WasteChapterId = table.Column<int>(type: "int", nullable: false),
                     IsHazzard = table.Column<bool>(type: "bit", nullable: false),
                     BioDegradable = table.Column<bool>(type: "bit", nullable: false),
                     BinId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
                     Outlet = table.Column<int>(type: "int", nullable: true),
                     LocationId = table.Column<int>(type: "int", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -84,30 +103,9 @@ namespace Vail_Engineering.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Record_WasteCategory_WasteCategoryId",
-                        column: x => x.WasteCategoryId,
-                        principalTable: "WasteCategory",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "WasteChapter",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    WasteChapterCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WasteChapterDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WasteChapter", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WasteChapter_WasteCategory_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "WasteCategory",
+                        name: "FK_Record_WasteChapter_WasteChapterId",
+                        column: x => x.WasteChapterId,
+                        principalTable: "WasteChapter",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -123,9 +121,9 @@ namespace Vail_Engineering.Migrations
                 column: "LocationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Record_WasteCategoryId",
+                name: "IX_Record_WasteChapterId",
                 table: "Record",
-                column: "WasteCategoryId");
+                column: "WasteChapterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WasteChapter_CategoryId",
@@ -140,13 +138,13 @@ namespace Vail_Engineering.Migrations
                 name: "Record");
 
             migrationBuilder.DropTable(
-                name: "WasteChapter");
-
-            migrationBuilder.DropTable(
                 name: "Bin");
 
             migrationBuilder.DropTable(
                 name: "Location");
+
+            migrationBuilder.DropTable(
+                name: "WasteChapter");
 
             migrationBuilder.DropTable(
                 name: "WasteCategory");

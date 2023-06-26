@@ -17,6 +17,12 @@
                 @Html.DisplayNameFor(model => model.Record[0].Date)
             </th>
             <th>
+                Cat. Id
+            </th>
+            <th>
+               Ch. Code
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Record[0].IsHazzard)
             </th>
             <th>
@@ -45,8 +51,15 @@
                     @item.Date.ToString("yyyy-MM-dd")
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.WasteChapter.Category.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WasteChapter.Code)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.IsHazzard)
                 </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.BioDegradable)
                 </td>

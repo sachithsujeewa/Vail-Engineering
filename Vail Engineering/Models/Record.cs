@@ -15,7 +15,7 @@
         public int Id { get; set; }
         public DateTime Date { get; set; }
 
-        public WasteCategory WasteCategory { get; set; }
+        public WasteChapter WasteChapter { get; set; }
 
         public bool IsHazzard { get; set; }
 

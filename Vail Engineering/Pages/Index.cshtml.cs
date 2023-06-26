@@ -27,6 +27,7 @@ namespace Vail_Engineering.Pages
             {
                 Record = await _context.Record
                     .Include(r => r.Bin)
+                    .Include(r => r.WasteChapter).ThenInclude(c=>c.Category)
                     .ToListAsync();
             }
         }

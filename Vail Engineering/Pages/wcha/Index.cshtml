@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.WasteChapter[0].WasteChapterCode)
+                @Html.DisplayNameFor(model => model.WasteChapter[0].Code)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WasteChapter[0].WasteChapterDescription)
+                @Html.DisplayNameFor(model => model.WasteChapter[0].Description)
             </th>
             <th></th>
         </tr>
@@ -26,10 +26,10 @@
 @foreach (var item in Model.WasteChapter) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.WasteChapterCode)
+                @Html.DisplayFor(modelItem => item.Code)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WasteChapterDescription)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

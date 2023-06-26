@@ -12,8 +12,8 @@ using Vail_Engineering.Data;
 namespace Vail_Engineering.Migrations
 {
     [DbContext(typeof(Vail_EngineeringContext))]
-    [Migration("20230625072613_1")]
-    partial class _1
+    [Migration("20230626032222_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,10 +91,7 @@ namespace Vail_Engineering.Migrations
                     b.Property<int?>("Outlet")
                         .HasColumnType("int");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WasteCategoryId")
+                    b.Property<int>("WasteChapterId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -103,7 +100,7 @@ namespace Vail_Engineering.Migrations
 
                     b.HasIndex("LocationId");
 
-                    b.HasIndex("WasteCategoryId");
+                    b.HasIndex("WasteChapterId");
 
                     b.ToTable("Record");
                 });
@@ -136,14 +133,14 @@ namespace Vail_Engineering.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("WasteChapterCode")
+                    b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WasteChapterDescription")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -168,9 +165,9 @@ namespace Vail_Engineering.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Vail_Engineering.Models.WasteCategory", "WasteCategory")
+                    b.HasOne("Vail_Engineering.Models.WasteChapter", "WasteChapter")
                         .WithMany()
-                        .HasForeignKey("WasteCategoryId")
+                        .HasForeignKey("WasteChapterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -178,16 +175,14 @@ namespace Vail_Engineering.Migrations
 
                     b.Navigation("Location");
 
-                    b.Navigation("WasteCategory");
+                    b.Navigation("WasteChapter");
                 });
 
             modelBuilder.Entity("Vail_Engineering.Models.WasteChapter", b =>
                 {
                     b.HasOne("Vail_Engineering.Models.WasteCategory", "Category")
                         .WithMany("WasteChapters")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });

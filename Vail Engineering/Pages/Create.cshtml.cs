@@ -31,15 +31,15 @@ namespace Vail_Engineering.Pages
         [BindProperty]
         public int LocationId { get; set; }
         [BindProperty]
-        public int WasteCategoryId { get; set; }
-        public IList<WasteCategory> WasteCategories { get; set; }
+        public int WasteChapterId { get; set; }
+        public IList<WasteChapter> WasteChapters { get; set; }
         public IList<Location> Locations { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
             if (_context.WasteChapter != null)
             {
-                WasteCategories = await _context.WasteCategory.ToListAsync();
+                WasteChapters = await _context.WasteChapter.ToListAsync();
             }
             if (_context.Location != null)
             {
@@ -68,7 +68,7 @@ namespace Vail_Engineering.Pages
             //};
             Record.Location = await _context.Location.FirstAsync(m => m.Id == LocationId);
 
-            Record.WasteCategory = await _context.WasteCategory.FirstAsync(m => m.Id == WasteCategoryId);
+            Record.WasteChapter = await _context.WasteChapter.FirstAsync(m => m.Id == WasteChapterId);
 
             _context.Record.Add(Record);
             await _context.SaveChangesAsync();

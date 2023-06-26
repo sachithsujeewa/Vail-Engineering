@@ -25,15 +25,15 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="Record.WasteCategory" class="control-label"></label>
-                @Html.DropDownListFor(m => m.WasteCategoryId, new SelectList(Model.WasteCategories, "Id", "Description"), "-- Select Waste Category --", new { @class = "form-control" })
-                <span asp-validation-for="Record.WasteCategory" class="text-danger"></span>
+                <label asp-for="Record.WasteChapter" class="control-label"></label>
+                @Html.DropDownListFor(m => m.WasteChapterId, new SelectList(Model.WasteChapters, "Id", "Description"), "-- Select Waste Chapter --", new { @class = "form-control" })
+                <span asp-validation-for="Record.WasteChapter" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Record.Location" class="control-label"></label>
-                @Html.DropDownListFor(m => m.LocationId, new SelectList(Model.Locations, "Id", "Name"), "-- Select Waste Category --", new { @class = "form-control" })
-                <span asp-validation-for="Record.WasteCategory" class="text-danger"></span>
+                @Html.DropDownListFor(m => m.LocationId, new SelectList(Model.Locations, "Id", "Name"), "-- Select Location --", new { @class = "form-control" })
+                <span asp-validation-for="Record.Location" class="text-danger"></span>
             </div>
 
             <div class="form-group form-check">
