@@ -9,6 +9,11 @@ builder.Services.AddDbContext<Vail_EngineeringContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Vail_EngineeringContext") ?? throw new InvalidOperationException("Connection string 'Vail_EngineeringContext' not found.")));
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<Vail_EngineeringContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

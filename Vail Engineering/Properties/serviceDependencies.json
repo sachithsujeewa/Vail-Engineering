@@ -3,6 +3,10 @@
     "mssql1": {
       "type": "mssql",
       "connectionId": "ConnectionStrings:Vail_EngineeringContext"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "Vail_EngineeringContext"
     }
   }
 }

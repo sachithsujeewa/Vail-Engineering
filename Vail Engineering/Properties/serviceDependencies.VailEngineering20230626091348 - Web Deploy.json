@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/VailEngineering20230626091348/providers/Microsoft.ServiceLinker/linkers/Vail_EngineeringContext_6C1576CC40",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/vailengineeringdbserver/databases/Vail Engineering_db",
+      "type": "mssql.azure",
+      "connectionId": "Vail_EngineeringContext"
+    }
+  }
+}
