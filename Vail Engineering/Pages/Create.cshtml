@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Record.WasteChapter" class="control-label"></label>
-                @Html.DropDownListFor(m => m.WasteChapterId, new SelectList(Model.WasteChapters, "Id", "Description"), "-- Select Waste Chapter --", new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.WasteChapterId, new SelectList(Model.WasteChapters, "Id", "Code"), "-- Select Waste Chapter --", new { @class = "form-control" })
                 <span asp-validation-for="Record.WasteChapter" class="text-danger"></span>
             </div>
 

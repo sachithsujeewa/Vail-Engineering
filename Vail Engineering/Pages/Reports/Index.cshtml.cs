@@ -110,8 +110,6 @@ namespace Vail_Engineering.Pages.Reports
 
             return colors;
         }
-
-
     }
 
     public class ChartData
